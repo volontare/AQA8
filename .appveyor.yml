@@ -19,8 +19,8 @@ install:
   - sleep 15
   - docker ps
   - sleep 15
-   - java -jar artifacts/app-deadline.jar &
-   - chmod +x gradlew
+  - java -jar artifacts/app-deadline.jar &
+  - chmod +x gradlew
 
 build_script:
    - ./gradlew test --info -Dselenide.headless=true
