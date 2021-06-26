@@ -1,9 +1,8 @@
 package ru.netology.test;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.*;
 import ru.netology.SQL.SqlData;
 import ru.netology.data.DataHelper;
 import ru.netology.page.LoginPage;
@@ -12,6 +11,16 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class Tests {
     DataHelper.UserData user = new DataHelper().getUser();
+
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
 
     @BeforeEach
     void setUp() {
